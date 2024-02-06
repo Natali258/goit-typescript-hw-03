@@ -12,19 +12,17 @@ class Person {
   }
 }
 abstract class House {
-  door: boolean;
-  tenants: Person[];
+  protected door: boolean = false;
+  private tenants: Person[] = [];
 
-  constructor(public key: Key) {
-    this.door = false;
-  }
+  constructor(public key: Key) {}
 
   comeIn(person: Person) {
     if (this.door) {
       this.tenants.push(person);
     }
   }
-  abstract OpenDoor(key: Key): void;
+  abstract openDoor(key: Key): void;
 }
 class MyHouse extends House {
   openDoor(key: Key): void {
